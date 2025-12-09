@@ -12,12 +12,18 @@ import org.springframework.stereotype.Service;
 import com.Ecostyle.CrimsonEyes.dto.DetalleVentaDTO;
 import com.Ecostyle.CrimsonEyes.dto.VentaDTO;
 import com.Ecostyle.CrimsonEyes.model.DetalleVenta;
+<<<<<<< HEAD
 import com.Ecostyle.CrimsonEyes.model.MetodoPago;
+=======
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
 import com.Ecostyle.CrimsonEyes.model.Producto;
 import com.Ecostyle.CrimsonEyes.model.Usuario;
 import com.Ecostyle.CrimsonEyes.model.Venta;
 import com.Ecostyle.CrimsonEyes.repository.DetalleVentaRepository;
+<<<<<<< HEAD
 import com.Ecostyle.CrimsonEyes.repository.MetodoPagoRepository;
+=======
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
 import com.Ecostyle.CrimsonEyes.repository.ProductoRepository;
 import com.Ecostyle.CrimsonEyes.repository.UsuarioRepository;
 import com.Ecostyle.CrimsonEyes.repository.VentaRepository;
@@ -37,9 +43,12 @@ public class VentaService {
     @Autowired
     private ProductoRepository productoRepository;
 
+<<<<<<< HEAD
     @Autowired
     private MetodoPagoRepository metodoPagoRepository;
 
+=======
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
     public List<VentaDTO> listar() {
         return ventaRepository.findAll().stream()
                 .map(this::convertToDTO)
@@ -68,8 +77,13 @@ public class VentaService {
             Venta venta = new Venta();
             venta.setUsuario(usuarioOpt.get());
             venta.setFecha(LocalDateTime.now());
+<<<<<<< HEAD
             venta.setEstado("FINALIZADO");
             venta.setMetodoPago(ventaDTO.getMetodoPago().trim());
+=======
+            venta.setEstado("PENDIENTE");
+            venta.setMetodoPago(ventaDTO.getMetodoPago());
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
             venta.setTotal(ventaDTO.getTotal());
 
             Venta ventaGuardada = ventaRepository.save(venta);
@@ -83,6 +97,7 @@ public class VentaService {
                         return ResponseEntity.badRequest().body(java.util.Map.of("estado", "Error", "mensaje", "Producto con ID " + detalleDTO.getProductoId() + " no existe"));
                     }
 
+<<<<<<< HEAD
                     // Obtener método de pago si está especificado en el detalle
                     MetodoPago metodoPago = null;
                     if (detalleDTO.getMetodoPagoId() != null && !detalleDTO.getMetodoPagoId().isEmpty()) {
@@ -96,14 +111,24 @@ public class VentaService {
                     detalle.setVenta(ventaGuardada);
                     detalle.setProducto(productoOpt.get());
                     detalle.setMetodoPago(metodoPago);
+=======
+                    DetalleVenta detalle = new DetalleVenta();
+                    detalle.setVenta(ventaGuardada);
+                    detalle.setProducto(productoOpt.get());
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
                     detalle.setCantidad(detalleDTO.getCantidad());
                     detalle.setPrecioUnitario(detalleDTO.getPrecioUnitario());
                     detalle.setSubtotal(detalleDTO.getCantidad() * detalleDTO.getPrecioUnitario());
                     total += detalle.getSubtotal();
                     detalleVentaRepository.save(detalle);
                 }
+<<<<<<< HEAD
                 // Actualizar total de la venta + 3000 por envío
                 ventaGuardada.setTotal(total + 3000);
+=======
+                // Actualizar total de la venta
+                ventaGuardada.setTotal(total);
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
                 ventaRepository.save(ventaGuardada);
 
                 // Recargar la venta desde la base de datos para obtener los detalles
@@ -112,6 +137,10 @@ public class VentaService {
                     ventaGuardada = ventaRecargada.get();
                 }
             } else {
+<<<<<<< HEAD
+=======
+                // Si no hay detalles, recargar igualmente para inicializar la lista
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
                 Optional<Venta> ventaRecargada = ventaRepository.findByIdWithDetalles(ventaGuardada.getId());
                 if (ventaRecargada.isPresent()) {
                     ventaGuardada = ventaRecargada.get();
@@ -131,6 +160,7 @@ public class VentaService {
                 return ResponseEntity.badRequest().body(java.util.Map.of("estado", "Error", "mensaje", "Venta no existe"));
             }
 
+<<<<<<< HEAD
             if (nuevoEstado == null || nuevoEstado.trim().isEmpty()) {
                 return ResponseEntity.badRequest().body(java.util.Map.of("estado", "Error", "mensaje", "El estado no puede estar vacío"));
             }
@@ -145,6 +175,13 @@ public class VentaService {
                 "mensaje", "Estado actualizado correctamente de " + estadoAnterior + " a " + nuevoEstado.toUpperCase(),
                 "venta", convertToDTO(ventaActualizada)
             ));
+=======
+            Venta venta = ventaOpt.get();
+            venta.setEstado(nuevoEstado);
+            ventaRepository.save(venta);
+
+            return ResponseEntity.ok(java.util.Map.of("estado", "OK", "mensaje", "Estado actualizado correctamente", "venta", convertToDTO(venta)));
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(java.util.Map.of("estado", "Error", "mensaje", e.getMessage()));
         }
@@ -176,10 +213,13 @@ public class VentaService {
         dto.setId(detalle.getId());
         dto.setProductoId(detalle.getProducto().getId());
         dto.setProductoNombre(detalle.getProducto().getNombre());
+<<<<<<< HEAD
         if (detalle.getMetodoPago() != null) {
             dto.setMetodoPagoId(detalle.getMetodoPago().getId());
             dto.setMetodoPagoNombre(detalle.getMetodoPago().getNombre());
         }
+=======
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
         dto.setCantidad(detalle.getCantidad());
         dto.setPrecioUnitario(detalle.getPrecioUnitario());
         dto.setSubtotal(detalle.getSubtotal());

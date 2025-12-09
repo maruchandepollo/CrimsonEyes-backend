@@ -1,0 +1,103 @@
+{
+  "info": {
+    "_postman_id": "ventas-collection-id",
+    "name": "CrimsonEyes - Sistema de Ventas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "VENTAS",
+      "item": [
+        {
+          "name": "1. Crear Venta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuarioEmail\": \"usuario@email.com\",\n  \"metodoPago\": \"TARJETA\",\n  \"total\": 0,\n  \"detalles\": [\n    {\n      \"productoId\": 1,\n      \"cantidad\": 2,\n      \"precioUnitario\": 50000\n    },\n    {\n      \"productoId\": 2,\n      \"cantidad\": 1,\n      \"precioUnitario\": 75000\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/ventas/crear",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["ventas", "crear"]
+            }
+          }
+        },
+        {
+          "name": "2. Obtener Todas las Ventas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/ventas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["ventas"]
+            }
+          }
+        },
+        {
+          "name": "3. Obtener Venta por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/ventas/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["ventas", "1"]
+            }
+          }
+        },
+        {
+          "name": "4. Obtener Ventas por Usuario",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/ventas/usuario/usuario@email.com",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["ventas", "usuario", "usuario@email.com"]
+            }
+          }
+        },
+        {
+          "name": "5. Actualizar Estado de Venta",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"COMPLETADA\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/ventas/1/estado",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["ventas", "1", "estado"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+

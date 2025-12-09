@@ -42,7 +42,11 @@ public class Venta {
 
     public Venta() {
         this.fecha = LocalDateTime.now();
+<<<<<<< HEAD
         this.estado = "FINALIZADO";
+=======
+        this.estado = "PENDIENTE";
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
         this.total = 0;
         this.detalles = new ArrayList<>();
     }

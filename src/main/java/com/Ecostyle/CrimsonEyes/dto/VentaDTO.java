@@ -13,7 +13,10 @@ public class VentaDTO {
     private String usuarioEmail;
     private int id;
 
+<<<<<<< HEAD
     //constructor vacio
+=======
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
     public VentaDTO() {
     }
 
@@ -28,6 +31,10 @@ public class VentaDTO {
         this.detalles = detalles;
     }
 
+<<<<<<< HEAD
+=======
+    // Getters y Setters
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
     public int getId() {
         return id;
     }

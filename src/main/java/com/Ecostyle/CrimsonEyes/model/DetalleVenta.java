@@ -23,10 +23,13 @@ public class DetalleVenta {
     @JoinColumn(name = "producto_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_producto_detalle"))
     private Producto producto;
 
+<<<<<<< HEAD
     @ManyToOne
     @JoinColumn(name = "metodo_pago_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_metodo_pago_detalle"))
     private MetodoPago metodoPago;
 
+=======
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
     @Column(nullable = false)
     private int cantidad;
 
@@ -67,6 +70,7 @@ public class DetalleVenta {
         this.producto = producto;
     }
 
+<<<<<<< HEAD
     public MetodoPago getMetodoPago() {
         return metodoPago;
     }
@@ -75,6 +79,8 @@ public class DetalleVenta {
         this.metodoPago = metodoPago;
     }
 
+=======
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
     public int getCantidad() {
         return cantidad;
     }

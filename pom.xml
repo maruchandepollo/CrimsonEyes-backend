@@ -51,6 +51,13 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+<<<<<<< HEAD
+=======
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.3.0</version>

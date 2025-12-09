@@ -30,7 +30,11 @@ public class Carrito {
     private Usuario usuario;
 
     @OneToMany(mappedBy = "carrito")
+<<<<<<< HEAD
     @JsonIgnore
+=======
+    @JsonIgnore // IMPORTANTE: Ignorar la lista de items para evitar ciclos
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
     private List<ItemCarrito> items;
 
     public Carrito() {

@@ -82,7 +82,11 @@ public class DataInitializer implements CommandLineRunner {
             productoRepository.save(p5);
             productoRepository.save(p6);
 
+<<<<<<< HEAD
             System.out.println("[DataInitializer] productos cargados exitosamente");
+=======
+            System.out.println("[DataInitializer] ✅ 6 productos cargados exitosamente");
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
         } else {
             System.out.println("[DataInitializer] Los productos ya existen en la BD, saltando inicialización");
         }

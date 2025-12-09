@@ -20,6 +20,10 @@ public class Persona {
         this.rut = "";
         this.nombre = "";
         this.telefono = 0;
+<<<<<<< HEAD
+=======
+        // No inicializar usuario aquí para evitar recursión infinita
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
     }
 
     public String getRut() {

@@ -30,6 +30,10 @@ public class ItemCarrito {
     @JoinColumn(name = "producto_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_producto_carrito"))
     private Producto producto;
 
+<<<<<<< HEAD
+=======
+    // Campo transient para facilitar la serialización
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
     @Transient
     private Integer carritoId;
 
@@ -38,6 +42,10 @@ public class ItemCarrito {
         this.cantidad = 0;
     }
 
+<<<<<<< HEAD
+=======
+    // Getters y Setters
+>>>>>>> f4db997a54f17682b088090e416eaf0312c8a11a
     public int getId() {
         return id;
     }
